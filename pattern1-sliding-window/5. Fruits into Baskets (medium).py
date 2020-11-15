@@ -28,6 +28,11 @@ from typing import List
 
 def fruits_into_baskets(fruits: List[str]) -> int:
     """
+    This problem follows the Sliding Window pattern and is quite similar to Longest Substring with K Distinct
+    Characters. In this problem, we need to find the length of the longest subarray with no more than two distinct
+    characters (or fruit types!). This transforms the current problem into Longest Substring with K Distinct Characters
+    where K=2.
+
     Time Complexity: O(N)
     Space Complexity: O(1)
 
