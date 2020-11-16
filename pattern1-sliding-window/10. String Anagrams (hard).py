@@ -30,6 +30,10 @@ from typing import List
 
 def find_string_anagrams(str1: str, pattern: str) -> List[int]:
     """
+    This problem follows the Sliding Window pattern and is very similar to Permutation in a String. In this problem, we
+    need to find every occurrence of any permutation of the pattern in the string. We will use a list to store the
+    starting indices of the anagrams of the pattern in the string.
+
     Time Complexity: O(len(str1) + len(pattern))
     Space Complexity: O(len(pattern))
 
