@@ -48,8 +48,8 @@ def find_permutation(str1: str, pattern: str) -> bool:
     If the window size is greater than the length of the pattern, shrink the window to make it equal to the pattern’s
     size. At the same time, if the character going out was part of the pattern, put it back in the frequency HashMap.
 
-    Time Complexity: O(N)
-    Space Complexity: O(1)
+    Time Complexity: O(len(str1) + len(pattern))
+    Space Complexity: O(len(pattern))
 
     :param str1: input string
     :param pattern: input pattern
