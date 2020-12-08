@@ -27,9 +27,18 @@ def longest_substring_with_k_distinct(str1: str, k: int) -> int:
     Time Complexity: O(N)
     Space Complexity: O(k)
 
-    :param str1: input string
-    :param k: no more than K distinct characters
-    :return: the length of the longest substring
+    Parameters
+    ----------
+    str1 : str
+        input string
+    k : int
+        no more than K distinct characters
+
+    Returns
+    -------
+    max_length : int
+        the length of the longest substring
+
     """
     max_length = 0
     seen = {}

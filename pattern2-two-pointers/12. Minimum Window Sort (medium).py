@@ -22,6 +22,18 @@ from typing import List
 
 
 def shortest_window_sort(arr: List[int]) -> int:
+    """
+    Time Complexity: O(N) where 'N' is the total number of nodes in the LinkedList
+    Space Complexity: O(1)
+
+    Parameters
+    ----------
+    arr
+
+    Returns
+    -------
+
+    """
     arr_len = len(arr)
     low = 0
     high = arr_len - 1

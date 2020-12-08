@@ -27,8 +27,16 @@ def non_repeating_substring(str1: str) -> int:
     Time Complexity: O(N)
     Space Complexity: O(1)
 
-    :param str1: input string
-    :return: the length of the longest substring without any repeating character
+    Parameters
+    ----------
+    str1 : str
+        input string
+
+    Returns
+    -------
+    max_length : int
+        the length of the longest substring without any repeating character
+
     """
     max_length = 0
     seen = {}

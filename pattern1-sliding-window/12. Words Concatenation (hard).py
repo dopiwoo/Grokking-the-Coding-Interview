@@ -24,12 +24,22 @@ from typing import List
 
 def find_word_concatenation(str1: str, words: List[str]) -> List[int]:
     """
-    Time Complexity: O(len(str1) + len(pattern))
-    Space Complexity: O(len(pattern))
+    Time Complexity: O(N)
+    Space Complexity: O(N)
 
-    :param str1: input string
-    :param words: input words
-    :return:
+    Parameters
+    ----------
+    str1 : str
+        input string
+    words : List[str]
+        input words
+
+    Returns
+    -------
+    result : List[int]
+        all the starting indices of substrings in the given string that are a concatenation of all the given words
+        exactly once without any overlapping of words
+
     """
     word_length = len(words[0])
     words_count = len(words)

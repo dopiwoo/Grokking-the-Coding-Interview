@@ -18,9 +18,18 @@ def find_averages_of_subarray_brute_force(k: int, arr: List[int]) -> List[float]
     Since for every element of the input array, we are calculating the sum of its next ‘k’ elements, the time complexity
     of the algorithm will be O(k * len(arr))
 
-    :param k: window size
-    :param arr: input array
-    :return: average k-element contiguous subarray
+    Parameters
+    ----------
+    k : int
+        window size
+    arr : List[int]
+        input array
+
+    Returns
+    -------
+    result : List[float]
+        average k-element contiguous subarray
+
     """
     result = []
     for i in range(len(arr) - k + 1):
@@ -39,9 +48,18 @@ def find_averages_of_subarray_sliding_window(k: int, arr: List[int]) -> List[flo
     included in the sliding window. This will save us from going through the whole subarray to find the sum and, as a
     result, the algorithm complexity will reduce to O(len(arr)).
 
-    :param k: window size
-    :param arr: input array
-    :return: average k-element contiguous subarray
+    Parameters
+    ----------
+    k : int
+        window size
+    arr : List[int]
+        input array
+
+    Returns
+    -------
+    result : List[float]
+        average k-element contiguous subarray
+
     """
     result = []
     window_start = 0

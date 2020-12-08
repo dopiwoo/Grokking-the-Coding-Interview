@@ -19,9 +19,18 @@ def max_sub_array_of_size_k(k: int, arr: List[Union[float, int]]) -> List[Union[
     Time Complexity: O(N)
     Space Complexity: O(1)
 
-    :param k: window size
-    :param arr: input array
-    :return: maximum sum of any contiguous subarray of size ‘k’
+    Parameters
+    ----------
+    k : int
+        window size
+    arr : List[Union[float, int]]
+        input array
+
+    Returns
+    -------
+    max_sum : List[Union[float, int]]
+        maximum sum of any contiguous subarray of size ‘k’
+
     """
     max_sum = 0
     window_start = 0

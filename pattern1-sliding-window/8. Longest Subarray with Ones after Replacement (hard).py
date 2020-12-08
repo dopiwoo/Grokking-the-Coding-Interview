@@ -35,9 +35,18 @@ def length_of_longest_substring(arr: List[int], k: int) -> int:
     Time Complexity: O(N)
     Space Complexity: O(1)
 
-    :param arr: input array
-    :param k: maximum number of replacement
-    :return: the length of the longest contiguous subarray having all 1s
+    Parameters
+    ----------
+    arr : List[int]
+        input array
+    k : int
+        maximum number of replacement
+
+    Returns
+    -------
+    max_length : int
+        the length of the longest contiguous subarray having all 1s
+
     """
     max_length = 0
     max_ones_count = 0

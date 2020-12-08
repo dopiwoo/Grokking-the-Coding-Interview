@@ -26,12 +26,21 @@ Explanation: No substring in the given string has all characters of the pattern.
 
 def find_substring(str1: str, pattern: str) -> str:
     """
-    Time Complexity: O(len(str1) + len(pattern))
-    Space Complexity: O(len(pattern))
+    Time Complexity: O(N)
+    Space Complexity: O(N)
 
-    :param str1: input string
-    :param pattern: input pattern
-    :return: the smallest substring in the given string which has all the characters of the given pattern
+    Parameters
+    ----------
+    str1 : str
+        input string
+    pattern : str
+        input pattern
+
+    Returns
+    -------
+    str
+        the smallest substring in the given string which has all the characters of the given pattern
+
     """
     matched = 0
     min_length = len(str1) + 1

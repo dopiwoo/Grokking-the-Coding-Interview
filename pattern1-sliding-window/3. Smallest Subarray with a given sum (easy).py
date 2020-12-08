@@ -25,12 +25,18 @@ def smallest_subarray_with_given_sum(s: int, arr: List[int]) -> int:
         Check if the current window length is the smallest so far, and if so, remember its length.
         Subtract the first element of the window from the running sum to shrink the sliding window.
 
-    Time Complexity: O(N)
-    Space Complexity: O(1)
+    Parameters
+    ----------
+    s : int
+        a positive number whose sum in the subarray is greater than or equal to
+    arr : List[int]
+        input array
 
-    :param s: a positive number whose sum in the subarray is greater than or equal to
-    :param arr: input array
-    :return: the length of the smallest contiguous subarray
+    Returns
+    -------
+    min_length : int
+        the length of the smallest contiguous subarray
+
     """
     min_length = float('inf')
     window_start = 0

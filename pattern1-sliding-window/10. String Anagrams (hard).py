@@ -34,12 +34,21 @@ def find_string_anagrams(str1: str, pattern: str) -> List[int]:
     need to find every occurrence of any permutation of the pattern in the string. We will use a list to store the
     starting indices of the anagrams of the pattern in the string.
 
-    Time Complexity: O(len(str1) + len(pattern))
-    Space Complexity: O(len(pattern))
+    Time Complexity: O(N)
+    Space Complexity: O(N)
 
-    :param str1: input string
-    :param pattern: input pattern
-    :return: the list of starting indices of the anagrams of the pattern in the given string
+    Parameters
+    ----------
+    str1 : str
+        input string
+    pattern : str
+        input pattern
+
+    Returns
+    -------
+    result : List[int]
+        the list of starting indices of the anagrams of the pattern in the given string
+
     """
     matched = 0
     result = []

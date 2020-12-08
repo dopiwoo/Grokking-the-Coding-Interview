@@ -10,7 +10,7 @@ Given the head of a LinkedList with a cycle, find the length of the cycle.
 
 
 class Node:
-    def __init__(self, value: int, next_node: 'Node' = None) -> None:
+    def __init__(self, value: int, next_node: 'Node' = None):
         self.value = value
         self.next = next_node
 
@@ -37,12 +37,11 @@ def find_cycle_length(head: Node) -> int:
         slow = slow.next
         fast = fast.next.next
         if slow == fast:
-            curr = slow
             length = 0
             while True:
                 slow = slow.next
                 length += 1
-                if curr == slow:
+                if fast == slow:
                     return length
     return 0
 

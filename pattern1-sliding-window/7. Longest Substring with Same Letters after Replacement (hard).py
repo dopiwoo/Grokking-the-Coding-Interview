@@ -39,9 +39,18 @@ def length_of_longest_substring(str1: str, k: int) -> int:
     Time Complexity: O(N)
     Space Complexity: O(1)
 
-    :param str1: input string
-    :param k: maximum number of replacement
-    :return: the length of the longest substring having the same letters after replacement
+    Parameters
+    ----------
+    str1 : str
+        input string
+    k : int
+        maximum number of replacement
+
+    Returns
+    -------
+    max_length : int
+        the length of the longest substring having the same letters after replacement
+
     """
     max_repeat = 0
     max_length = 0

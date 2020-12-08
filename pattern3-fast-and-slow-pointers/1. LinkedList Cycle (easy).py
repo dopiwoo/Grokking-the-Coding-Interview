@@ -10,7 +10,7 @@ Given the head of a Singly LinkedList, write a function to determine if the Link
 
 
 class Node:
-    def __init__(self, value: int, next_node: 'Node' = None) -> None:
+    def __init__(self, value: int, next_node: 'Node' = None):
         self.value = value
         self.next = next_node
 
@@ -29,6 +29,7 @@ def has_cycle(head: Node) -> bool:
     -------
     bool
         whether the LinkedList has a cycle in it or not
+
     """
     slow = head
     fast = head

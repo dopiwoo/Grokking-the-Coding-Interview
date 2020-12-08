@@ -14,12 +14,12 @@ Write a function to return the maximum number of fruits in both the baskets.
 Example 1:
 Input: ['A', 'B', 'C', 'A', 'C']
 Output: 3
-Explanation: We can put 2 'C' in one basket and one 'A' in the other from the subarray ['C', 'A', 'C'].
+Explanation: We can put two 'C' in one basket and one 'A' in the other from the subarray ['C', 'A', 'C'].
 
 Example 2:
 Input: ['A', 'B', 'C', 'B', 'B', 'C']
 Output: 5
-Explanation: We can put 2 'B' in one basket and two 'C' in the other basket. This can be done if we start with the
+Explanation: We can put three 'B' in one basket and two 'C' in the other basket. This can be done if we start with the
 second letter: ['B', 'C', 'B', 'B', 'C'].
 """
 
@@ -36,8 +36,16 @@ def fruits_into_baskets(fruits: List[str]) -> int:
     Time Complexity: O(N)
     Space Complexity: O(1)
 
-    :param fruits:
-    :return:
+    Parameters
+    ----------
+    fruits : List[str]
+        input array of characters
+
+    Returns
+    -------
+    max_length : int
+        the maximum number of fruits in both the baskets
+
     """
     max_length = 0
     seen = {}
