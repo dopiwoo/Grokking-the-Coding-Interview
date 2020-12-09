@@ -14,14 +14,6 @@ class Node:
         self.value = value
         self.next = next_node
 
-    def __str__(self) -> str:
-        out = ''
-        temp = self
-        while temp is not None:
-            out += str(temp.value) + ' -> '
-            temp = temp.next
-        return out[:-4]
-
 
 def find_cycle_start(head: Node) -> Node:
     """
