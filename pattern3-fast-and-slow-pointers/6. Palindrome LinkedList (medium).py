@@ -24,8 +24,13 @@ class Node:
         self.value = value
         self.next = next_node
 
-    def __repr__(self):
-        return str(self.value)
+    def __repr__(self) -> str:
+        string = ''
+        temp_node = self
+        while temp_node is not None:
+            string += '->' + str(temp_node.value)
+            temp_node = temp_node.next
+        return string[2:]
 
 
 def is_palindrome_linked_list(head: Node) -> bool:
@@ -67,7 +72,8 @@ def is_palindrome_linked_list(head: Node) -> bool:
             curr_head = next_node
         return prev
 
-    if head is None or head.next is None:
+    # a single node LinkedList is a palindrome
+    if head.next is None:
         return True
 
     # find middle of the LinkedList
@@ -86,7 +92,7 @@ def is_palindrome_linked_list(head: Node) -> bool:
     # compare the first and the second half
     while head is not None and head_second_half is not None:
         if head.value != head_second_half.value:
-            return False
+            break
         head = head.next
         head_second_half = head_second_half.next
 

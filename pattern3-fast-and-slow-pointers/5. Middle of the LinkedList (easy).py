@@ -27,6 +27,14 @@ class Node:
         self.value = value
         self.next = next_node
 
+    def __repr__(self) -> str:
+        string = ''
+        temp_node = self
+        while temp_node is not None:
+            string += '->' + str(temp_node.value)
+            temp_node = temp_node.next
+        return string[2:]
+
 
 def find_middle_of_linked_list(head: Node) -> Node:
     """
