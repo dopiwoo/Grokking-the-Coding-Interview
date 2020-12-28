@@ -35,32 +35,49 @@ class Node:
 
 
 def reorder(head: Node):
-    return None
+    def reverse(curr_head: Node):
+        """
+        Reverse a Singly LinkedList.
 
+        Parameters
+        ----------
+        curr_head : Node
+            input head of a Singly LinkedList
 
-def reverse(curr_head: Node) -> Node:
-    """
-    Reverse a Singly LinkedList.
+        Returns
+        -------
+        None.
 
-    Parameters
-    ----------
-    curr_head : Node
-        input head of a Singly LinkedList
+        """
+        prev = None
+        while curr_head is not None:
+            next_node = curr_head.next
+            curr_head.next = prev
+            prev = curr_head
+            curr_head = next_node
+        return prev
 
-    Returns
-    -------
-    prev : Node
-        the head of the reversed Singly LinkedList
+    # find middle of the LinkedList
+    fast = head
+    slow = head
+    while fast is not None and fast.next is not None:
+        fast = fast.next.next
+        slow = slow.next
+    head_second_half = reverse(slow)
+    head_first_half = head
 
-    """
-    prev = None
-    while curr_head is not None:
-        next_node = curr_head.next
-        curr_head.next = prev
-        prev = curr_head
-        curr_head = next_node
-    curr_head = prev
-    return prev
+    # rearrange to produce the LinkedList in the required order
+    while head_first_half is not None and head_second_half is not None:
+        temp = head_first_half.next
+        head_first_half.next = head_second_half
+        head_first_half = temp
+        temp = head_second_half.next
+        head_second_half.next = head_first_half
+        head_second_half = temp
+
+    # set the next of the last node to None
+    if head_first_half is not None:
+        head_first_half.next = None
 
 
 if __name__ == '__main__':
@@ -70,5 +87,5 @@ if __name__ == '__main__':
     a.next.next.next = Node(8)
     a.next.next.next.next = Node(10)
     a.next.next.next.next.next = Node(12)
-    print(reverse(a))
+    reorder(a)
     print(a)
