@@ -32,14 +32,33 @@ Explanation: We will need one room for [2, 3] and [3, 5], and another room for [
 """
 
 from typing import List
+import heapq
 
 
-def min_meeting_rooms(meetings: List[List[int]]):
+def min_meeting_rooms(meetings: List[List[int]]) -> int:
+    """
+    Time Complexity: O(N * log(N))
+    Space Complexity: O(N)
+
+    Parameters
+    ----------
+    meetings : List[List[int]]
+        input meetings
+
+    Returns
+    -------
+    int
+        the minimum number of rooms required to hold all the meetings
+
+    """
+    free_rooms = []
     meetings.sort(key=lambda x: x[0])
-    min_rooms = 0
-    min_heap = []
-    for i in range(len(meetings)):
-        pass
+    heapq.heappush(free_rooms, meetings[0][1])
+    for i in meetings[1:]:
+        if free_rooms[0] <= i[0]:
+            heapq.heappop(free_rooms)
+        heapq.heappush(free_rooms, i[1])
+    return len(free_rooms)
 
 
 if __name__ == '__main__':
