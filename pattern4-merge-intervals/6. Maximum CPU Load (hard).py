@@ -30,16 +30,31 @@ import heapq
 
 
 def find_max_cpu_load(jobs: List[List[int]]) -> int:
+    """
+    Time Complexity: O(N * log(N))
+    Space Complexity: O(N)
+
+    Parameters
+    ----------
+    jobs : List[List[int]]
+        input list of jobs
+
+    Returns
+    -------
+    max_cpu_load : int
+        the maximum CPU load at any time if all the jobs are running on the same machine
+
+    """
     jobs.sort(key=lambda x: x[0])
     min_heap = []
-    heapq.heappush(min_heap, jobs[0][1])
+    heapq.heappush(min_heap, (jobs[0][1], jobs[0][2]))
     curr_cpu_load = jobs[0][2]
-    max_cpu_load = jobs[0][2]
+    max_cpu_load = curr_cpu_load
     for i in jobs[1:]:
-        if min_heap[0] <= i[0]:
+        while len(min_heap) != 0 and min_heap[0][0] <= i[0]:
+            curr_cpu_load -= min_heap[0][1]
             heapq.heappop(min_heap)
-            curr_cpu_load -= i[2]
-        heapq.heappush(min_heap, i[1])
+        heapq.heappush(min_heap, (i[1], i[2]))
         curr_cpu_load += i[2]
         max_cpu_load = max(max_cpu_load, curr_cpu_load)
     return max_cpu_load
