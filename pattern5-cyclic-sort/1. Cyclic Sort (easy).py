@@ -29,8 +29,30 @@ Output: [1, 2, 3, 4, 5, 6]
 from typing import List
 
 
-def cyclic_sort(nums: List[int]):
-    pass
+def cyclic_sort(nums: List[int]) -> List[int]:
+    """
+    Time Complexity: O(N)
+    Space Complexity: O(1)
+
+    Parameters
+    ----------
+    nums : List[int]
+        Input array.
+
+    Returns
+    -------
+    nums : List[int]
+        The sorted array.
+
+    """
+    i = 0
+    while i < len(nums):
+        j = nums[i] - 1
+        if nums[i] != nums[j]:
+            nums[i], nums[j] = nums[j], nums[i]
+        else:
+            i += 1
+    return nums
 
 
 if __name__ == '__main__':
