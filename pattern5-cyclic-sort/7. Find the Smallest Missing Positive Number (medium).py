@@ -44,7 +44,7 @@ def find_first_smallest_missing_positive(nums: List[int]) -> int:
     len_nums = len(nums)
     while i < len_nums:
         j = nums[i] - 1
-        if 0 < nums[i] <= len_nums and nums[i] != nums[j]:
+        if 0 <= j < len_nums and nums[i] != nums[j]:
             nums[i], nums[j] = nums[j], nums[i]
         else:
             i += 1
