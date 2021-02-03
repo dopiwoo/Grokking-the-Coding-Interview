@@ -56,5 +56,4 @@ if __name__ == '__main__':
     a.next.next.next = Node(8)
     a.next.next.next.next = Node(10)
     print(a)
-    result = reverse(a)
-    print(result)
+    print(reverse(a))
