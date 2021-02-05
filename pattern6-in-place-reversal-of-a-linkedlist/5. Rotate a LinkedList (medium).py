@@ -24,8 +24,36 @@ class Node:
 
 
 def rotate(head: Node, rotations: int) -> Node or None:
+    """
+    Time Complexity: O(N)
+    Space Complexity: O(1)
+
+    Parameters
+    ----------
+    head : Node
+        Input head of a Singly LinkedList.
+    rotations : int
+        Input number 'k'.
+
+    Returns
+    -------
+    Node or None
+        The LinkedList rotated to the right by 'k' nodes.
+
+    """
     if not head:
         return None
+    cur = head
+    length = 1
+    while cur.next is not None:
+        cur = cur.next
+        length += 1
+    cur.next = head
+    tail = head
+    for i in range(length - rotations % length - 1):
+        tail = tail.next
+    head = tail.next
+    tail.next = None
     return head
 
 
