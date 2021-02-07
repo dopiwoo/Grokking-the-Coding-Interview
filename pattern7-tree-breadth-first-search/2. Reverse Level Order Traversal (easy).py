@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb  5 17:25:28 2021
+Created on Sun Feb  7 17:19:43 2021
 
 @author: dopiwoo
 
-Given a binary tree, populate an array to represent its level-by-level traversal. You should populate the values of all
-nodes of each level from left to right in separate sub-arrays.
+Given a binary tree, populate an array to represent its level-by-level traversal in reverse order, i.e., the lowest
+level comes first. You should populate the values of all nodes in each level from left to right in separate sub-arrays.
 """
 
 from collections import deque
@@ -32,12 +32,12 @@ def traverse(root: TreeNode) -> List[List[int]]:
     Returns
     -------
     res : List[List[int]]
-        Array representing the level-by-level traversal of the given binary tree.
+        Array representing the level-by-level traversal in reverse order of the given binary tree.
 
     """
-    res = []
     if not root:
-        return res
+        return []
+    res = deque()
     queue = deque()
     queue.append(root)
     while queue:
@@ -49,8 +49,8 @@ def traverse(root: TreeNode) -> List[List[int]]:
                 queue.append(cur_node.left)
             if cur_node.right:
                 queue.append(cur_node.right)
-        res.append(cur_level)
-    return res
+        res.appendleft(cur_level)
+    return list(res)
 
 
 if __name__ == '__main__':
