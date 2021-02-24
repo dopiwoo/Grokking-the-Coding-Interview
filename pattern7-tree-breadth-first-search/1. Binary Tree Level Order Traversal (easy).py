@@ -14,9 +14,13 @@ from typing import List
 
 
 class TreeNode:
-    def __init__(self, val: int):
+    def __init__(self, val: int = 0, left: 'TreeNode' = None, right: 'TreeNode' = None):
         self.val = val
-        self.left, self.right = None, None
+        self.left = left
+        self.right = right
+
+    def __repr__(self):
+        return str(self.val)
 
 
 def traverse(root: TreeNode) -> List[List[int]]:
@@ -38,8 +42,7 @@ def traverse(root: TreeNode) -> List[List[int]]:
     res = []
     if not root:
         return res
-    queue = deque()
-    queue.append(root)
+    queue = deque([root])
     while queue:
         cur_level = []
         for _ in range(len(queue)):
