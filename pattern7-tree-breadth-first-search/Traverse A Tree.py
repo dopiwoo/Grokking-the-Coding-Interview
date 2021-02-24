@@ -92,9 +92,9 @@ class Iterative:
         while stack:
             root = stack.pop()
             output.append(root.val)
-            if root.left is not None:
+            if root.left:
                 stack.append(root.left)
-            if root.right is not None:
+            if root.right:
                 stack.append(root.right)
         return output[::-1]
 
