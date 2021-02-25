@@ -35,7 +35,7 @@ def traverse(root: TreeNode) -> List[List[int]]:
 
     Returns
     -------
-    res : List[List[int]]
+    List[List[int]]
         Array representing the level-by-level traversal in reverse order of the given binary tree.
 
     """

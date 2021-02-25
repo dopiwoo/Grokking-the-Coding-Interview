@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb  5 17:25:28 2021
+Created on Thu Feb 25 11:30:41 2021
 
 @author: dopiwoo
 
-Given a binary tree, populate an array to represent its level-by-level traversal. You should populate the values of all
-nodes of each level from left to right in separate sub-arrays.
+Given a binary tree, populate an array to represent its zigzag level order traversal. You should populate the values of
+all nodes of the first level from left to right, then right to left for the next level and keep alternating in the same
+manner for the following levels.
 """
 
 from collections import deque
@@ -36,23 +37,28 @@ def traverse(root: TreeNode) -> List[List[int]]:
     Returns
     -------
     List[List[int]]
-        Array representing the level-by-level traversal of the given binary tree.
+        Array representing the zigzag level order traversal of the given binary tree.
 
     """
     if not root:
         return []
     queue = deque([root])
     res = []
+    left_to_right = True
     while queue:
-        cur_level = []
+        cur_level = deque()
         for _ in range(len(queue)):
             cur_node = queue.popleft()
-            cur_level.append(cur_node.val)
+            if left_to_right:
+                cur_level.append(cur_node.val)
+            else:
+                cur_level.appendleft(cur_node.val)
             if cur_node.left:
                 queue.append(cur_node.left)
             if cur_node.right:
                 queue.append(cur_node.right)
-        res.append(cur_level)
+        res.append(list(cur_level))
+        left_to_right = not left_to_right
     return res
 
 
@@ -63,4 +69,6 @@ if __name__ == '__main__':
     root_node.left.left = TreeNode(9)
     root_node.right.left = TreeNode(10)
     root_node.right.right = TreeNode(5)
+    root_node.right.left.left = TreeNode(20)
+    root_node.right.left.right = TreeNode(17)
     print(traverse(root_node))
