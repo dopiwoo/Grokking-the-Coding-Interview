@@ -36,14 +36,14 @@ def traverse(root: TreeNode) -> List[List[int]]:
 
     Returns
     -------
-    List[List[int]]
+    res : List[List[int]]
         Array representing the zigzag level order traversal of the given binary tree.
 
     """
-    if not root:
-        return []
-    queue = deque([root])
     res = []
+    if not root:
+        return res
+    queue = deque([root])
     left_to_right = True
     while queue:
         cur_level = deque()

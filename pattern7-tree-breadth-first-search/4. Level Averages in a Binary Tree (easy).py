@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb  5 17:25:28 2021
+Created on Fri Feb 26 10:02:53 2021
 
 @author: dopiwoo
 
-Given a binary tree, populate an array to represent its level-by-level traversal. You should populate the values of all
-nodes of each level from left to right in separate sub-arrays.
+Given a binary tree, populate an array to represent the averages of all of its levels.
 """
 
 from collections import deque
@@ -23,7 +22,7 @@ class TreeNode:
         return str(self.val)
 
 
-def traverse(root: TreeNode) -> List[List[int]]:
+def find_level_averages(root: TreeNode) -> List[float]:
     """
     Time Complexity: O(N)
     Space Complexity: O(N)
@@ -35,8 +34,8 @@ def traverse(root: TreeNode) -> List[List[int]]:
 
     Returns
     -------
-    res : List[List[int]]
-        Array representing the level-by-level traversal of the given binary tree.
+    res : List[float]
+        Array representing the averages of all levels of the given binary tree.
 
     """
     res = []
@@ -44,15 +43,16 @@ def traverse(root: TreeNode) -> List[List[int]]:
         return res
     queue = deque([root])
     while queue:
-        cur_level = []
-        for _ in range(len(queue)):
+        level_size = len(queue)
+        level_sum = 0.0
+        for _ in range(level_size):
             cur_node = queue.popleft()
-            cur_level.append(cur_node.val)
+            level_sum += cur_node.val
             if cur_node.left:
                 queue.append(cur_node.left)
             if cur_node.right:
                 queue.append(cur_node.right)
-        res.append(cur_level)
+        res.append(level_sum / level_size)
     return res
 
 
@@ -61,6 +61,7 @@ if __name__ == '__main__':
     root_node.left = TreeNode(7)
     root_node.right = TreeNode(1)
     root_node.left.left = TreeNode(9)
+    root_node.left.right = TreeNode(2)
     root_node.right.left = TreeNode(10)
     root_node.right.right = TreeNode(5)
-    print(traverse(root_node))
+    print(find_level_averages(root_node))

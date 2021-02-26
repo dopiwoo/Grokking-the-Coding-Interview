@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb  5 17:25:28 2021
+Created on Fri Feb 26 10:11:06 2021
 
 @author: dopiwoo
 
-Given a binary tree, populate an array to represent its level-by-level traversal. You should populate the values of all
-nodes of each level from left to right in separate sub-arrays.
+Find the minimum depth of a binary tree. The minimum depth is the number of nodes along the shortest path from the root
+node to the nearest leaf node.
 """
 
 from collections import deque
-from typing import List
 
 
 class TreeNode:
@@ -23,7 +22,7 @@ class TreeNode:
         return str(self.val)
 
 
-def traverse(root: TreeNode) -> List[List[int]]:
+def find_minimum_depth(root: TreeNode) -> int:
     """
     Time Complexity: O(N)
     Space Complexity: O(N)
@@ -35,32 +34,33 @@ def traverse(root: TreeNode) -> List[List[int]]:
 
     Returns
     -------
-    res : List[List[int]]
-        Array representing the level-by-level traversal of the given binary tree.
+    min_depth : int
+        The minimum depth of the given binary tree.
 
     """
-    res = []
     if not root:
-        return res
+        return 0
+    min_depth = 0
     queue = deque([root])
     while queue:
-        cur_level = []
+        min_depth += 1
         for _ in range(len(queue)):
             cur_node = queue.popleft()
-            cur_level.append(cur_node.val)
+            if not cur_node.left and not cur_node.right:
+                return min_depth
             if cur_node.left:
                 queue.append(cur_node.left)
             if cur_node.right:
                 queue.append(cur_node.right)
-        res.append(cur_level)
-    return res
 
 
 if __name__ == '__main__':
     root_node = TreeNode(12)
     root_node.left = TreeNode(7)
     root_node.right = TreeNode(1)
-    root_node.left.left = TreeNode(9)
     root_node.right.left = TreeNode(10)
     root_node.right.right = TreeNode(5)
-    print(traverse(root_node))
+    print(find_minimum_depth(root_node))
+    root_node.left.left = TreeNode(9)
+    root_node.right.left.left = TreeNode(11)
+    print(find_minimum_depth(root_node))
