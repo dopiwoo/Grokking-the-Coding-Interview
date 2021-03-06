@@ -22,8 +22,36 @@ class TreeNode:
         return str(self.val)
 
 
-def find_successor(root: TreeNode, key: int):
-    pass
+def find_successor(root: TreeNode, key: int) -> TreeNode or None:
+    """
+    Time Complexity: O(N)
+    Space Complexity: O(N)
+
+    Parameters
+    ----------
+    root : TreeNode
+        Input binary tree.
+    key : int
+        Input node.
+
+    Returns
+    -------
+    TreeNode or None
+        The level order successor of the given node in the given tree.
+
+    """
+    if not root:
+        return None
+    queue = deque([root])
+    while queue:
+        cur_node = queue.popleft()
+        if cur_node.left:
+            queue.append(cur_node.left)
+        if cur_node.right:
+            queue.append(cur_node.right)
+        if cur_node.val == key:
+            break
+    return queue[0] if queue else None
 
 
 if __name__ == '__main__':
