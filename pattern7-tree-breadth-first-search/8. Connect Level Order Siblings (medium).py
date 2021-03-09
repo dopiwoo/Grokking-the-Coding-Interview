@@ -22,27 +22,53 @@ class TreeNode:
     def __repr__(self):
         return str(self.val)
 
-    def __str__(self):
+    def print_level_order(self):
         string = ''
         next_level_root = self
         while next_level_root:
             cur = next_level_root
             next_level_root = None
             while cur:
-                string += str(cur.val) + ' '
+                print(str(cur.val) + ' ', end='')
                 if not next_level_root:
                     if cur.left:
                         next_level_root = cur.left
                     elif cur.right:
                         next_level_root = cur.right
                 cur = cur.next
-            string += '\n'
+            print()
         return string
 
 
 def connect_level_order_siblings(root: TreeNode):
+    """
+    Time Complexity: O(N)
+    Space Complexity: O(N)
+
+    Parameters
+    ----------
+    root : TreeNode
+        Input binary tree.
+
+    Returns
+    -------
+    None.
+
+    """
     if not root:
         return None
+    queue = deque([root])
+    while queue:
+        prev_node = None
+        for _ in range(len(queue)):
+            cur_node = queue.popleft()
+            if prev_node:
+                prev_node.next = cur_node
+            prev_node = cur_node
+            if cur_node.left:
+                queue.append(cur_node.left)
+            if cur_node.right:
+                queue.append(cur_node.right)
 
 
 if __name__ == '__main__':
@@ -52,4 +78,5 @@ if __name__ == '__main__':
     root_node.left.left = TreeNode(9)
     root_node.right.left = TreeNode(10)
     root_node.right.right = TreeNode(5)
-    print(connect_level_order_siblings(root_node))
+    connect_level_order_siblings(root_node)
+    root_node.print_level_order()
