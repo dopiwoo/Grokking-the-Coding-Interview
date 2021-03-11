@@ -9,6 +9,8 @@ Given a binary tree and a number 'S', find all paths from root-to-leaf such that
 each path equals 'S'.
 """
 
+from typing import List
+
 
 class TreeNode:
     def __init__(self, val: int = 0, left: 'TreeNode' = None, right: 'TreeNode' = None):
@@ -20,13 +22,37 @@ class TreeNode:
         return str(self.val)
 
 
-def find_paths(root: TreeNode, required_sum: int):
+def find_paths(root: TreeNode, required_sum: int) -> List[List[int]]:
+    """
+    Time Complexity: O(N^2)
+    Space Complexity: O(N)
+
+    Parameters
+    ----------
+    root : TreeNode
+        Input binary tree.
+    required_sum : int
+        Input number 'S'.
+
+    Returns
+    -------
+    all_paths : List[List[int]]
+        All paths from root-to-leaf such that the sum of all the node values of each path equals 'S'.
+
+    """
+    def find_paths_recursive(cur_node, path_sum, cur_path, ins_all_paths):
+        if not cur_node:
+            return
+        cur_path.append(cur_node.val)
+        if cur_node.val == path_sum and not cur_node.left and not cur_node.right:
+            ins_all_paths.append(cur_path.copy())
+        else:
+            find_paths_recursive(cur_node.left, path_sum - cur_node.val, cur_path, ins_all_paths)
+            find_paths_recursive(cur_node.right, path_sum - cur_node.val, cur_path, ins_all_paths)
+        del cur_path[-1]
+
     all_paths = []
-    cur_path = [root.val]
-    if root.val == required_sum and not root.left and not root.right:
-        all_paths.append(list(cur_path))
-    else:
-        find_paths()
+    find_paths_recursive(root, required_sum, [], all_paths)
     return all_paths
 
 

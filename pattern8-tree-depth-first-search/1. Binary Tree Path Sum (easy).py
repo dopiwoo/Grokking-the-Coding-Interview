@@ -20,7 +20,7 @@ class TreeNode:
         return str(self.val)
 
 
-def has_path(root: TreeNode, path_sum: int):
+def has_path(root: TreeNode, path_sum: int) -> bool:
     """
     Time Complexity: O(N)
     Space Complexity: O(N)
@@ -34,8 +34,8 @@ def has_path(root: TreeNode, path_sum: int):
 
     Returns
     -------
-    TYPE
-        DESCRIPTION.
+    bool
+        Whether the tree has a path from root-to-leaf such that the sum of all the node values of that path equals 'S'.
 
     """
     if not root:
