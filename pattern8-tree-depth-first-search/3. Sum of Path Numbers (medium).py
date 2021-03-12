@@ -20,8 +20,31 @@ class TreeNode:
         return str(self.val)
 
 
-def find_sum_of_path_numbers(root: TreeNode):
-    return -1
+def find_sum_of_path_numbers(root: TreeNode) -> int:
+    """
+    Time Complexity: O(N)
+    Space Complexity: O(N)
+
+    Parameters
+    ----------
+    root : TreeNode
+        Input binary tree.
+
+    Returns
+    -------
+    int
+        The total sum of all the numbers represented by all paths.
+
+    """
+    def find_path_sum(cur_node: TreeNode, path_sum: int) -> int:
+        if not cur_node:
+            return 0
+        path_sum = path_sum * 10 + cur_node.val
+        if not cur_node.left and not cur_node.right:
+            return path_sum
+        return find_path_sum(cur_node.left, path_sum) + find_path_sum(cur_node.right, path_sum)
+
+    return find_path_sum(root, 0)
 
 
 if __name__ == '__main__':
@@ -31,4 +54,4 @@ if __name__ == '__main__':
     root_node.left.left = TreeNode(1)
     root_node.right.left = TreeNode(6)
     root_node.right.right = TreeNode(5)
-    print(find_sum_of_path_numbers(root_node, 23))
+    print(find_sum_of_path_numbers(root_node))

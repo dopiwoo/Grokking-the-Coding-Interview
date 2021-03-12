@@ -40,7 +40,7 @@ def find_paths(root: TreeNode, required_sum: int) -> List[List[int]]:
         All paths from root-to-leaf such that the sum of all the node values of each path equals 'S'.
 
     """
-    def find_paths_recursive(cur_node, path_sum, cur_path, ins_all_paths):
+    def find_paths_recursive(cur_node: TreeNode, path_sum: int, cur_path: List[int], ins_all_paths: List[List[int]]):
         if not cur_node:
             return
         cur_path.append(cur_node.val)
